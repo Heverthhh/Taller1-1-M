@@ -49,6 +49,14 @@ public class Calculadora {
         return sin(num1);
     }
 
+    double coseno() {
+        return cos(num1);
+    }
+
+    double tangente() {
+        return tan(num1);
+    }
+
     public static void main(String[] args) {
         Scanner lectura = new Scanner(System.in);
         Calculadora calculadora = new Calculadora(0, 0);
@@ -63,10 +71,12 @@ public class Calculadora {
                 5. Potencia
                 6. Raiz
                 7. Seno
-                8. Salir""");
+                8. Coseno
+                9. Tangente
+                10. Salir""");
 
         do {
-            System.out.println("Digite un número entre 1-8: ");
+            System.out.println("Digite un número entre 1-10: ");
             opc = lectura.nextInt();
 
             switch (opc) {
@@ -124,9 +134,21 @@ public class Calculadora {
                     calculadora = new Calculadora(num1, 0);
                     System.out.println("Resultado del seno: " + calculadora.seno());
                 }
-                case 8 -> System.out.println("Saliendo de la calculadora.");
+                case 8 -> {
+                    System.out.println("Ingrese un número: ");
+                    int num1 = lectura.nextInt();
+                    calculadora = new Calculadora(num1, 0);
+                    System.out.println("Resultado del coseno: " + calculadora.coseno());
+                }
+                case 9 -> {
+                    System.out.println("Ingrese un número: ");
+                    int num1 = lectura.nextInt();
+                    calculadora = new Calculadora(num1, 0);
+                    System.out.println("Resultado de la tangente: " + calculadora.tangente());
+                }
+                case 10 -> System.out.println("Saliendo de la calculadora.");
                 default -> System.out.println("Opción no válida.");
             }
-        } while (opc != 8);
+        } while (opc != 10);
     }
 }
