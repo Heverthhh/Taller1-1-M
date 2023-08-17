@@ -1,6 +1,7 @@
 package com.mycompany.calculadora;
 
-import static java.lang.Math.pow;
+import static java.lang.Math.*;
+
 import java.util.Scanner;
 
 public class Calculadora {
@@ -35,30 +36,37 @@ public class Calculadora {
         }
         return 0;
     }
-    double pot(){
-        return pow(num1,num2);
+
+    double pot() {
+        return pow(num1, num2);
     }
-    double raiz(){
-        return pow((num1),(1/num2));
+
+    double raiz() {
+        return pow(num1, 1.0 / num2);
+    }
+
+    double seno() {
+        return sin(num1);
     }
 
     public static void main(String[] args) {
         Scanner lectura = new Scanner(System.in);
-        Calculadora calculadora = new Calculadora(0,0);
+        Calculadora calculadora = new Calculadora(0, 0);
         int opc;
 
         System.out.println("------Calculadora-------");
         System.out.println("""
-                           1. Suma
-                           2. Resta
-                           3. Multiplicacion
-                           4. Division
-                           5. Potencia
-                           6. Raiz
-                           7. Salir""");
+                1. Suma
+                2. Resta
+                3. Multiplicacion
+                4. Division
+                5. Potencia
+                6. Raiz
+                7. Seno
+                8. Salir""");
 
         do {
-            System.out.println("Digite un número entre 1-7: ");
+            System.out.println("Digite un número entre 1-8: ");
             opc = lectura.nextInt();
 
             switch (opc) {
@@ -110,11 +118,15 @@ public class Calculadora {
                     calculadora = new Calculadora(num1, num2);
                     System.out.println("Resultado de la raiz: " + calculadora.raiz());
                 }
-                case 7 -> System.out.println("Saliendo de la calculadora.");
+                case 7 -> {
+                    System.out.println("Ingrese un número: ");
+                    int num1 = lectura.nextInt();
+                    calculadora = new Calculadora(num1, 0);
+                    System.out.println("Resultado del seno: " + calculadora.seno());
+                }
+                case 8 -> System.out.println("Saliendo de la calculadora.");
                 default -> System.out.println("Opción no válida.");
             }
-        } while (opc != 7);
+        } while (opc != 8);
     }
-}    
-
-
+}
